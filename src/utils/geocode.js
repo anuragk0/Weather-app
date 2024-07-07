@@ -1,7 +1,8 @@
 request = require("request")
+require('dotenv').config()
 
 const geocode = (address, callback) => {
-    const url = "https://api.geoapify.com/v1/geocode/autocomplete?text=" + encodeURIComponent(address) + "&lang=en&limit=1&type=city&format=json&apiKey=6666914962014157841ea257e4db4111"
+    const url = "https://api.geoapify.com/v1/geocode/autocomplete?text=" + encodeURIComponent(address) + "&lang=en&limit=1&type=city&format=json&apiKey=" + (process.env.GEO_API)
     
     request({url, json: true} , (error, {body}) => {
         if (error){
